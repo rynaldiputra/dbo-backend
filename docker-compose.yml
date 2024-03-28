@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  database:
+    image: "mysql"
+    container_name: "db-mysql"
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: true
+      MYSQL_DATABASE: "dbo_backend"
+    networks:
+      - "mynet"
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "database"
+    networks:
+      - "mynet" 
+
+networks:
+  mynet:
+    driver: "bridge"

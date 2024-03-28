@@ -1,0 +1,8 @@
+{
+    "host": "db-mysql",
+    "host_without_container": "localhost",
+    "port": "3306",
+    "database_name": "dbo_backend",
+    "username": "root",
+    "password": ""
+}
